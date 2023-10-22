@@ -1,0 +1,47 @@
+[tool.poetry]
+name = "diffusion-model"
+version = "0.1.0"
+description = ""
+authors = ["Kitamura <ymyk6602@gmail.com>"]
+readme = "README.md"
+packages = [{include = "diffusion_model"}]
+
+# docker環境ではtensorflowはすでにinstallされている想定なので、
+# tensorflowとかはdev dependenciesに入れる（lsp用）
+[tool.poetry.dependencies]
+python = ">=3.8,<3.11"
+tensorflow-probability = "^0.21.0"
+imageio = "^2.31.2"
+tensorflow-datasets = "^4.9.2"
+
+[tool.poetry.group.dev.dependencies]
+ipykernel = "^6.23.1"
+jupyter = "^1.0.0"
+jupyterlab = "^4.0.0"
+tensorflow = "^2.12.0"
+tensorboard = "^2.13.0"
+matplotlib = "^3.7.1"
+epc = "^0.0.5"
+orjson = "^3.9.5"
+sexpdata = "^1.0.1"
+six = "^1.16.0"
+rapidfuzz = "^3.2.0"
+paramiko = "^3.3.1"
+
+[[tool.poetry.source]]
+name = "nvidia"
+url = "https://developer.download.nvidia.com/compute/redist"
+priority = "supplemental"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.pyright]
+venvPath = ".venv"
+
+[tool.black]
+line-length = 105
+
+[tool.isort]
+skip = ["diffusion_model"]
