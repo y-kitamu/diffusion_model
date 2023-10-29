@@ -20,6 +20,7 @@ services:
               device_ids: ["1"]
     hostname: ${COMPOSE_PROJECT_NAME}
     ports:
+      - "8887:8888" # jupyter
       - "33330:22"  # ssh
     volumes:
       - /etc/localtime:/etc/localtime

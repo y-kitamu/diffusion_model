@@ -9,9 +9,10 @@ function run_as_user() {
     #
     PROJECT_DIR=${HOME}/work/${COMPOSE_PROJECT_NAME}/
     pip install --editable ${PROJECT_DIR}
+    jupyter lab --NotebookApp.token='password' --ip='*' --notebook-dir=/home/`id -n -u`/work --allow_remote_access=true --browser=False
 }
 
 chown -R ${USER_NAME}:${USER_NAME} ${USER_HOME}
 
+/usr/sbin/sshd
 sudo COMPOSE_PROJECT_NAME=${COMPOSE_PROJECT_NAME} su ${USER_NAME} -c "$(declare -f run_as_user); run_as_user"
-/usr/sbin/sshd -D
